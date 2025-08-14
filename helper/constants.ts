@@ -162,12 +162,12 @@ export const specialOffers = [
 ];
 
 export const colorGradients = [
-  "from-[#0D3A0D] to-[#145214]", // Dark green shades blending with primary
-  "from-[#011E27] to-[#023B4C]", // Dark blue shades blending with secondary
-  "from-[#0A2F2F] to-[#024D4D]", // Teal-dark gradient
-  "from-[#1C3A17] to-[#2E5823]", // Earthy green-dark gradient
-  "from-[#123B4C] to-[#022731]", // Deep blue to your secondary
-  "from-[#145214] to-[#0D3A0D]", // Primary-inspired dark gradient
+  "from-[#0D3A0D] to-[#145214]", 
+  "from-[#011E27] to-[#023B4C]", 
+  "from-[#0A2F2F] to-[#024D4D]", 
+  "from-[#1C3A17] to-[#2E5823]", 
+  "from-[#123B4C] to-[#022731]", 
+  "from-[#145214] to-[#0D3A0D]", 
 ];
 
 export const feeCharges = {

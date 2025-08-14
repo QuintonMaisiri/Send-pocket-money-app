@@ -16,7 +16,6 @@ export default function SignUpPage() {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-    // Check if fullName already exists
     if (
       users.some(
         (u: any) =>
@@ -27,7 +26,6 @@ export default function SignUpPage() {
       return;
     }
 
-    // Save new user
     const hashedPassword = await hashPassword(userInfo.password);
     users.push({
       fullName: userInfo.fullName,
