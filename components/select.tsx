@@ -4,14 +4,18 @@ export default function Select({
   required,
   label,
   placeholder,
+  value,
+  onChange
 }: SelectProps) {
   return (
     <div className="space-y-2">
       <label htmlFor={placeholder}>{label}</label>
       <select
+        id={placeholder}
         className={`bg-gray-100 text-secondary font-black text-xl p-4 rounded-xl w-full focus:outline-none focus:ring-0 ${className}`}
         required={required}
-        defaultValue=""
+        value={value}
+        onChange={onChange}
       >
         <option value="" disabled>
           {placeholder}
@@ -32,4 +36,6 @@ export type SelectProps = {
   required?: boolean;
   label: string;
   placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };

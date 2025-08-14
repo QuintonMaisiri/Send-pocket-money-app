@@ -18,8 +18,7 @@ export default function RootLayout({
       <body
         className={`font-urbanist bg-gray-100`}
       >
-        <Navbar />
-        <div className="mx-auto max-w-[1440px] min-h-screen">{children}</div>
+        <div className="">{children}</div>
       </body>
     </html>
   );

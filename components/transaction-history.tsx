@@ -1,12 +1,14 @@
 "use client";
 
-import { transactions } from "@/helper/constants";
+import { dummyTransactions } from "@/helper/constants";
+import { Transaction } from "@/helper/types";
 import { History } from "lucide-react";
-import { use, useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function TransactionHistory() {
+export default function TransactionHistory({refreshTransactionsKey}: {refreshTransactionsKey: number}) {
   const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 8;
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const rowsPerPage = 15;
 
   const totalPages = Math.ceil(transactions.length / rowsPerPage);
   const startIndex = (currentPage - 1) * rowsPerPage;
@@ -17,6 +19,15 @@ export default function TransactionHistory() {
     Failed: "bg-red-100 text-red-800",
     Pending: "bg-yellow-100 text-yellow-800",
   };
+
+  useEffect(() => {
+    let storedTransactions = JSON.parse(
+      localStorage.getItem("transactions") || "[]"
+    );
+    storedTransactions = [...storedTransactions, ...dummyTransactions];
+    setTransactions(storedTransactions);
+    setCurrentPage(1);
+  }, [refreshTransactionsKey]);
 
   return (
     <div className="bg-white p-4 rounded-xl border border-gray-200 space-y-4 overflow-x-scroll">
@@ -39,20 +50,26 @@ export default function TransactionHistory() {
             <th className="p-3 border border-gray-200">Status</th>
           </tr>
         </thead>
-        <tbody>{
-           currentRows.map((txn) => (
+        <tbody>
+          {currentRows.map((txn) => (
             <tr key={txn.transactionId}>
-              <td className="p-3 border border-gray-200">{txn.transactionId}</td>
+              <td className="p-3 border border-gray-200">
+                {txn.transactionId}
+              </td>
               <td className="p-3 border border-gray-200">{txn.date}</td>
               <td className="p-3 border border-gray-200">{txn.recipient}</td>
               <td className="p-3 border border-gray-200">{txn.destination}</td>
-              <td className="p-3 border border-gray-200">${txn.amountSent.toFixed(2)}</td>
+              <td className="p-3 border border-gray-200">
+                ${txn.amountSent.toFixed(2)}
+              </td>
               <td className="p-3 border border-gray-200">
                 {txn.amountReceived}
               </td>
               <td className="p-3 border border-gray-200">
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-medium ${statusColors[txn.status]}`}
+                  className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    statusColors[txn.status]
+                  }`}
                 >
                   {txn.status}
                 </span>
@@ -61,9 +78,10 @@ export default function TransactionHistory() {
           ))}
         </tbody>
       </table>
-      <div className="stick md:relative top-0 left-0 w-max md:w-full md:flex items-center justify-between text-sm">
+      <div className="sticky md:relative top-0 left-0 w-max md:w-full md:flex items-center justify-between text-sm">
         <span>
-          Showing {startIndex + 1}-{Math.min(startIndex + rowsPerPage, transactions.length)} of{" "}
+          Showing {startIndex + 1}-
+          {Math.min(startIndex + rowsPerPage, transactions.length)} of{" "}
           {transactions.length} transactions
         </span>
         <div className="flex gap-1 mt-4 md:mt-0">

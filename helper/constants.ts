@@ -1,4 +1,6 @@
-export const transactions = [
+import { g } from "motion/react-client";
+
+export const dummyTransactions = [
   {
     transactionId: "TXN046539",
     date: "2025-08-14",
@@ -137,33 +139,38 @@ export const transactions = [
 ];
 
 export const specialOffers = [
-    {
-        heading: "Limited Time Offer",
-        description: "Get 20% off your next transaction",
-        cta: "Claim Offer"
-    },
-    {
-        heading: "Refer a Friend",
-        description: "Give your friends a discount and earn rewards",
-        cta: "Refer Now"
-    },
-    {
-        heading: "Seasonal Promotion",
-        description: "Enjoy special rates during the holiday season",
-        cta: "Learn More"
-    },
-    {
-        heading: "Cashback Offer",
-        description: "Get 5% cashback on your next transaction",
-        cta: "Claim Cashback"
-    }
-]
+  {
+    heading: "Limited Time Offer",
+    description: "Get 20% off your next transaction",
+    cta: "Claim Offer",
+  },
+  {
+    heading: "Refer a Friend",
+    description: "Give your friends a discount and earn rewards",
+    cta: "Refer Now",
+  },
+  {
+    heading: "Seasonal Promotion",
+    description: "Enjoy special rates during the holiday season",
+    cta: "Learn More",
+  },
+  {
+    heading: "Cashback Offer",
+    description: "Get 5% cashback on your next transaction",
+    cta: "Claim Cashback",
+  },
+];
 
 export const colorGradients = [
-    "from-[#0D3A0D] to-[#145214]", // Dark green shades blending with primary
-    "from-[#011E27] to-[#023B4C]", // Dark blue shades blending with secondary
-    "from-[#0A2F2F] to-[#024D4D]", // Teal-dark gradient
-    "from-[#1C3A17] to-[#2E5823]", // Earthy green-dark gradient
-    "from-[#123B4C] to-[#022731]", // Deep blue to your secondary
-    "from-[#145214] to-[#0D3A0D]", // Primary-inspired dark gradient
-  ];
+  "from-[#0D3A0D] to-[#145214]", // Dark green shades blending with primary
+  "from-[#011E27] to-[#023B4C]", // Dark blue shades blending with secondary
+  "from-[#0A2F2F] to-[#024D4D]", // Teal-dark gradient
+  "from-[#1C3A17] to-[#2E5823]", // Earthy green-dark gradient
+  "from-[#123B4C] to-[#022731]", // Deep blue to your secondary
+  "from-[#145214] to-[#0D3A0D]", // Primary-inspired dark gradient
+];
+
+export const feeCharges = {
+  GBP: 10,
+  ZAR: 20,
+};
