@@ -34,8 +34,18 @@ FX_RATES_API_URL=https://68976304250b078c2041c7fc.mockapi.io/api/wiremit/Intervi
 ```bash
 yarn dev
 ```
-
 The app will be available at `http://localhost:3000`.
+
+---
+## **Key Design Choices**
+
+Persisted login: User login state is saved in localStorage to survive page refreshes.
+
+Transaction limits: Minimum sending amount is 10 USD, maximum is 1000 USD.
+
+Unique accounts: The app does not support multiple accounts with the same email or name to prevent conflicts.
+
+Single-user focus: The app is designed for individual usage per account.
 
 ---
 
